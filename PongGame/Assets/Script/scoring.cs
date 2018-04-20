@@ -48,12 +48,14 @@ public class scoring : MonoBehaviour {
             start = false;
             score = false;
             reflect = false;
+            reflectNormal = new Vector3();
         }
         if (collision.gameObject.name.Equals("p2 goal")) {
             p1score++;
             start = false;
             score = true;
             reflect = false;
+            reflectNormal = new Vector3();
         }
         if (collision.gameObject.name.Equals("p1Left") || collision.gameObject.name.Equals("p1Right") || collision.gameObject.name.Equals("p2Left") || collision.gameObject.name.Equals("p2Right")) {
             reflect = true;
