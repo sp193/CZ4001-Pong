@@ -14,20 +14,21 @@ public class scoring : MonoBehaviour {
     private bool reflect = false; 
     public GameObject p1;
     public GameObject p2;
+    public float speed;
     // Use this for initialization
     void Start () {
         p1score = 0;
         p2score = 0;
-        transform.position = new Vector3(p1.transform.position.x+0.6f, p1.transform.position.y+0.5f, p1.transform.position.z);
+        transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y, p1.transform.position.z);
     }
 	
 	// Update is called once per frame
 	void Update () {
         if(!start)
             if(!score)
-                transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y +0.5f, p1.transform.position.z);
+                transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y, p1.transform.position.z);
             else
-                transform.position = new Vector3(p2.transform.position.x - 0.5f, p2.transform.position.y + 0.5f, p2.transform.position.z);
+                transform.position = new Vector3(p2.transform.position.x - 0.5f, p2.transform.position.y, p2.transform.position.z);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -78,9 +79,9 @@ public class scoring : MonoBehaviour {
     void checkStart() {
         if (start)
             if (!score)
-                transform.Translate(2f*Time.deltaTime, 0f, 0f);
+                transform.Translate(speed * Time.deltaTime, 0f, 0f);
             else
-                transform.Translate(-2f*Time.deltaTime, 0f, 0f);
+                transform.Translate((-speed) * Time.deltaTime, 0f, 0f);
     }
     void checkReflect(Vector3 normal) {
         if (reflect)

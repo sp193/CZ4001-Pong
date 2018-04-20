@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class p1controls : MonoBehaviour {
 
+    public GameObject marker;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,5 +18,7 @@ public class p1controls : MonoBehaviour {
         if (Input.GetKey(KeyCode.S))
             transform.Translate(0f, 0f, -3f * Time.deltaTime);
 
+        //Move relative to the marker's Y position.
+        this.transform.position = new Vector3(transform.position.x, marker.transform.position.y, transform.position.z);
 	}
 }
