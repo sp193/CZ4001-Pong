@@ -10,7 +10,7 @@ Scoring:
 * Player scores points for deflecting the ball.
 
 Additional instructions for setting up the source code:
-* Add the custom merge rules from .gitconfig with this command: git config --local include.path .gitconfig
+* Add the custom merge rules from .gitconfig with this command: git config --local include.path ..\.gitconfig
 * Edit Program Files\Unity\Editor\Data\Tools\mergespecfile.txt to point to your favourite diff tool.
 	For me, it is WinMerge:
 ```	# WinMerge
