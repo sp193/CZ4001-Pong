@@ -6,6 +6,10 @@ TagManager:
   tags:
   - p1goal
   - p2goal
+  - Floor
+  - Character
+  - Glove
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -15,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - AR background
+  - AR background 2
+  - AR foreground
   - 
   - 
   - 
