@@ -7,9 +7,7 @@ TagManager:
   - p1goal
   - p2goal
   - Floor
-  - Character
-  - Glove
-  - Target
+  - Wall
   layers:
   - Default
   - TransparentFX

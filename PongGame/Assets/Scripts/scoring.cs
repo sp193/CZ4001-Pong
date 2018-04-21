@@ -14,26 +14,44 @@ public class scoring : MonoBehaviour {
     private bool reflect = false; 
     public GameObject p1;
     public GameObject p2;
+    public Text GameOverText;
     public float speed;
+    public float reflectionFactor;
     // Use this for initialization
     void Start () {
         p1score = 0;
         p2score = 0;
-        transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y, p1.transform.position.z);
+        GameOverText.enabled = true;
     }
 	
+    private void GameOver()
+    {
+        start = false;
+        score = false;
+        GameOverText.enabled = true;
+        reflect = false;
+        reflectNormal = new Vector3();
+    }
+
 	// Update is called once per frame
 	void Update () {
         if(!start)
             if(!score)
-                transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y, p1.transform.position.z);
+                transform.position = new Vector3(p1.transform.position.x+0.25f, p1.transform.position.y, transform.position.z);
             else
-                transform.position = new Vector3(p2.transform.position.x - 0.5f, p2.transform.position.y, p2.transform.position.z);
+                transform.position = new Vector3(p2.transform.position.x-0.25f, p2.transform.position.y, transform.position.z);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            GameOverText.enabled = false;
             start = true;
         }
+        if((transform.position.x > 4 || transform.position.x < -4)
+            || (transform.position.y > 4 || transform.position.x < -4))
+        {
+            GameOver();
+        }
+
         if (!reflect) 
             checkStart();
         else
@@ -46,19 +64,13 @@ public class scoring : MonoBehaviour {
         if (collision.gameObject.name.Equals("p1 goal"))
         {
             p2score++;
-            start = false;
-            score = false;
-            reflect = false;
-            reflectNormal = new Vector3();
+            GameOver();
         }
-        if (collision.gameObject.name.Equals("p2 goal")) {
+        else if (collision.gameObject.name.Equals("p2 goal")) {
             p1score++;
-            start = false;
-            score = true;
-            reflect = false;
-            reflectNormal = new Vector3();
+            GameOver();
         }
-        if (collision.gameObject.name.Equals("p1Left") || collision.gameObject.name.Equals("p1Right") || collision.gameObject.name.Equals("p2Left") || collision.gameObject.name.Equals("p2Right")) {
+        if (collision.gameObject.name.Equals("p1Left") || collision.gameObject.name.Equals("p1Right") || collision.gameObject.name.Equals("p2Left") || collision.gameObject.name.Equals("p2Right") || collision.gameObject.CompareTag("Wall")) {
             reflect = true;
             reflectNormal = calNormal(collision);
         }
@@ -86,7 +98,7 @@ public class scoring : MonoBehaviour {
     void checkReflect(Vector3 normal) {
         if (reflect)
         {
-            transform.Translate(normal.x/15, 0f, normal.z/15);
+            transform.Translate(normal.x / reflectionFactor, 0f, normal.z / reflectionFactor);
         }
     }
 }

@@ -5,24 +5,19 @@ using UnityEngine;
 public class p2controls : MonoBehaviour {
 
     public GameObject marker;
+    private Vector3 startLoc;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        startLoc = transform.localPosition;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.UpArrow))
-            transform.Translate(0f, 0f, 3f * Time.deltaTime);
-        if (Input.GetKey(KeyCode.DownArrow))
-            transform.Translate(0f, 0f, -3f * Time.deltaTime);
-
-        //Move relative to the marker's Y position.
+        //Move relative to the marker's Y-position.
         if (marker.activeSelf) {
-            Vector3 loc = transform.position;
-            loc.y = marker.transform.position.y;
-            transform.position = loc;
+            Vector3 loc = transform.localPosition;
+            transform.localPosition = new Vector3(startLoc.x, marker.transform.position.y, startLoc.z);
         }
     }
 }
