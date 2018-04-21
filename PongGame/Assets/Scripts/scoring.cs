@@ -15,11 +15,24 @@ public class scoring : MonoBehaviour {
     public GameObject p1;
     public GameObject p2;
     public float speed;
+	//particle
+	public ParticleSystem scoreEffect;
+	//audio
+
     // Use this for initialization
     void Start () {
         p1score = 0;
         p2score = 0;
         transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y, p1.transform.position.z);
+		// audio
+
+
+		// particle
+		var effects = GameObject.FindGameObjectWithTag("VE");
+		scoreEffect = effects.GetComponent<ParticleSystem> ();
+
+
+
     }
 	
 	// Update is called once per frame
@@ -50,6 +63,9 @@ public class scoring : MonoBehaviour {
             score = false;
             reflect = false;
             reflectNormal = new Vector3();
+			//play effect
+			playScoreEffect (collision.contacts[0]);
+
         }
         if (collision.gameObject.name.Equals("p2 goal")) {
             p1score++;
@@ -57,6 +73,9 @@ public class scoring : MonoBehaviour {
             score = true;
             reflect = false;
             reflectNormal = new Vector3();
+			// play effect
+			playScoreEffect (collision.contacts[0]);
+
         }
         if (collision.gameObject.name.Equals("p1Left") || collision.gameObject.name.Equals("p1Right") || collision.gameObject.name.Equals("p2Left") || collision.gameObject.name.Equals("p2Right")) {
             reflect = true;
@@ -89,4 +108,13 @@ public class scoring : MonoBehaviour {
             transform.Translate(normal.x/15, 0f, normal.z/15);
         }
     }
+	public void playScoreEffect(ContactPoint target)
+	{
+		// play effect based on contact point position( to play it at previous position)
+		Vector3 pos = target.point;
+		scoreEffect.transform.position = pos;
+		//particle play
+		if(!scoreEffect.isPlaying)
+			scoreEffect.Play();
+	}
 }
