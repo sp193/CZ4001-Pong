@@ -19,6 +19,10 @@ public class p2controls : MonoBehaviour {
             transform.Translate(0f, 0f, -3f * Time.deltaTime);
 
         //Move relative to the marker's Y position.
-        this.transform.position = new Vector3(transform.position.x, marker.transform.position.y, transform.position.z);
+        if (marker.activeSelf) {
+            Vector3 loc = transform.position;
+            loc.y = marker.transform.position.y;
+            transform.position = loc;
+        }
     }
 }

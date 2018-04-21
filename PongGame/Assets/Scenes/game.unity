@@ -1934,7 +1934,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1321305328}
-  - component: {fileID: 1321305327}
   - component: {fileID: 1321305326}
   - component: {fileID: 1321305325}
   - component: {fileID: 1321305329}
@@ -1992,13 +1991,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &1321305327
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1321305324}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1321305328
 Transform:
