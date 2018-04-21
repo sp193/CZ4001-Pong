@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   MultiConfigFile: 
   NFTDataName: 
   currentUseContPoseEstimation: 1
-  currentFiltered: 0
+  currentFiltered: 1
   currentFilterSampleRate: 30
   currentFilterCutoffFreq: 15
   currentNFTScale: 1
@@ -1486,6 +1486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 842986492}
   - component: {fileID: 842986493}
+  - component: {fileID: 842986494}
   m_Layer: 9
   m_Name: WorldMarker
   m_TagString: Untagged
@@ -1523,8 +1524,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToRemainVisible: 0
-  eventReceiver: {fileID: 0}
+  eventReceiver: {fileID: 842986491}
   _markerTag: WorldMarker
+--- !u!114 &842986494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 842986491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b5b1d676702be4f8d1a00286731d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldMarkerHelpText: {fileID: 1129859001}
 --- !u!1 &854943410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,6 +1743,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1129858999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1129859000}
+  - component: {fileID: 1129859002}
+  - component: {fileID: 1129859001}
+  m_Layer: 5
+  m_Name: WorldMarkerHelpText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1129859000
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129858999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1790188552}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 320, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1129859001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129858999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: World AR marker not detected
+--- !u!222 &1129859002
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129858999}
 --- !u!1 &1136530692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +2061,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -561838018
+  randomSeed: 2074473790
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6070,6 +6157,7 @@ RectTransform:
   - {fileID: 1418214568}
   - {fileID: 510939885}
   - {fileID: 1720262626}
+  - {fileID: 1129859000}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6091,7 +6179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4465992173442650, guid: 45ca04192b175364688defb813473fd9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4465992173442650, guid: 45ca04192b175364688defb813473fd9, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6137,6 +6225,26 @@ Prefab:
       propertyPath: p2
       value: 
       objectReference: {fileID: 791028918}
+    - target: {fileID: 114462084380071784, guid: 45ca04192b175364688defb813473fd9,
+        type: 2}
+      propertyPath: GameOverText
+      value: 
+      objectReference: {fileID: 1720262627}
+    - target: {fileID: 114462084380071784, guid: 45ca04192b175364688defb813473fd9,
+        type: 2}
+      propertyPath: reflectionFactor
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462084380071784, guid: 45ca04192b175364688defb813473fd9,
+        type: 2}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462084380071784, guid: 45ca04192b175364688defb813473fd9,
+        type: 2}
+      propertyPath: scoreEffect
+      value: 
+      objectReference: {fileID: 1196696915}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45ca04192b175364688defb813473fd9, type: 2}
   m_IsPrefabParent: 0

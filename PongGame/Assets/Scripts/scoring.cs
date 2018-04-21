@@ -15,8 +15,8 @@ public class scoring : MonoBehaviour {
     public GameObject p1;
     public GameObject p2;
     public Text GameOverText;
-    public float speed;
-    public float reflectionFactor;
+    public float speed = 1;
+    public float reflectionFactor = 40;
 	//particle
 	public ParticleSystem scoreEffect;
 	//audio
@@ -26,7 +26,6 @@ public class scoring : MonoBehaviour {
         p1score = 0;
         p2score = 0;
         GameOverText.enabled = true;
-        transform.position = new Vector3(p1.transform.position.x+0.5f, p1.transform.position.y, p1.transform.position.z);
 		// audio
 
 
