@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.5645232, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -815,7 +815,7 @@ MonoBehaviour:
   BarcodeID: 0
   MultiConfigFile: 
   NFTDataName: 
-  currentUseContPoseEstimation: 0
+  currentUseContPoseEstimation: 1
   currentFiltered: 0
   currentFilterSampleRate: 30
   currentFilterCutoffFreq: 15
@@ -842,7 +842,7 @@ MonoBehaviour:
   videoConfigurationAndroid0: 
   videoConfigurationWindowsStore0: -device=WinMC -format=BGRA -position=rear
   videoConfigurationLinux0: 
-  BackgroundLayer0: 8
+  BackgroundLayer0: 9
   VideoIsStereo: 0
   transL2RName: transL2R
   videoCParamName1: 
@@ -853,18 +853,18 @@ MonoBehaviour:
   videoConfigurationWindowsStore1: -device=WinMC -format=BGRA
   videoConfigurationLinux1: 
   BackgroundLayer1: 9
-  NearPlane: 0.01
-  FarPlane: 5
+  NearPlane: 5
+  FarPlane: 15
   ContentRotate90: 0
   ContentFlipH: 0
   ContentFlipV: 0
   ContentAlign: 4
   currentContentMode: 1
-  currentThresholdMode: 0
-  currentThreshold: 100
+  currentThresholdMode: 3
+  currentThreshold: 15
   currentLabelingMode: 1
   currentTemplateSize: 16
-  currentTemplateCountMax: 25
+  currentTemplateCountMax: 3
   currentBorderSize: 0.25
   currentPatternDetectionMode: 0
   currentMatrixCodeType: 3
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   BarcodeID: 0
   MultiConfigFile: 
   NFTDataName: 
-  currentUseContPoseEstimation: 0
+  currentUseContPoseEstimation: 1
   currentFiltered: 0
   currentFilterSampleRate: 30
   currentFilterCutoffFreq: 15
@@ -1306,13 +1306,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 542677071}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561380988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1595,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 842986491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1605,7 +1605,7 @@ Transform:
   - {fileID: 854943411}
   - {fileID: 791028919}
   m_Father: {fileID: 1869319564}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &842986493
 MonoBehaviour:
@@ -2348,7 +2348,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1869319564}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1647482368
 MonoBehaviour:
@@ -2375,14 +2375,14 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647482366}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1647482370
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647482366}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1647482371
 Camera:
   m_ObjectHideFlags: 0
@@ -2399,12 +2399,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 5
+  far clip plane: 15
+  field of view: 70.1
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967039
@@ -2640,8 +2640,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1647482367}
   - {fileID: 842986492}
+  - {fileID: 1647482367}
   m_Father: {fileID: 328452327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2656,8 +2656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365d48fee229c499493cd3bcf4e7a59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  findMarkerTags: []
-  _findMarkerMode: 0
+  findMarkerTags:
+  - WorldMarker
+  - Player2
+  - Player1
+  _findMarkerMode: 1
 --- !u!1 &2120134148
 GameObject:
   m_ObjectHideFlags: 0
