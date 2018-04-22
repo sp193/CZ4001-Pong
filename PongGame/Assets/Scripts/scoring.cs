@@ -20,6 +20,7 @@ public class scoring : MonoBehaviour {
 	//particle
 	public ParticleSystem scoreEffect;
 	//audio
+	public AudioSource[] pongBounce;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +29,11 @@ public class scoring : MonoBehaviour {
         GameOverText.enabled = true;
 		// audio
 
+		var allAudio = GetComponents<AudioSource>();
+		pongBounce = new AudioSource[5];
+		for (int i = 0; i < 5; i++) {
+			pongBounce [i] = allAudio [i];
+		}
 
 		// particle
 		var effects = GameObject.FindGameObjectWithTag("VE");
@@ -87,6 +93,7 @@ public class scoring : MonoBehaviour {
         if (collision.gameObject.name.Equals("p1Left") || collision.gameObject.name.Equals("p1Right") || collision.gameObject.name.Equals("p2Left") || collision.gameObject.name.Equals("p2Right") || collision.gameObject.CompareTag("Wall")) {
             reflect = true;
             reflectNormal = calNormal(collision);
+			playBounceOff();
         }
         print(collision.gameObject.name);
     }
@@ -115,6 +122,7 @@ public class scoring : MonoBehaviour {
             transform.Translate(normal.x / reflectionFactor, 0f, normal.z / reflectionFactor);
         }
     }
+
 	public void playScoreEffect(ContactPoint target)
 	{
 		// play effect based on contact point position( to play it at previous position)
@@ -123,5 +131,14 @@ public class scoring : MonoBehaviour {
 		//particle play
 		if(!scoreEffect.isPlaying)
 			scoreEffect.Play();
+		if (!pongBounce [4].isPlaying)
+			pongBounce [4].Play ();
+	}
+	public void playBounceOff()
+	{
+		int randomSeed = Random.Range (0, 3);
+		if(!pongBounce[randomSeed].isPlaying)
+			pongBounce [randomSeed].Play();
+
 	}
 }
