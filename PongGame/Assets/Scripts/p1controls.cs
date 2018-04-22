@@ -17,7 +17,7 @@ public class p1controls : MonoBehaviour {
         //Move relative to the marker's Y-position.
         if (marker.activeSelf) {
             Vector3 loc = transform.localPosition;
-            transform.localPosition = new Vector3(startLoc.x, marker.transform.position.y, startLoc.z);
+            transform.localPosition = new Vector3(startLoc.x, startLoc.z, marker.transform.localPosition.z);
         }
     }
 }
