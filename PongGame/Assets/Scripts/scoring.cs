@@ -21,6 +21,10 @@ public class scoring : MonoBehaviour {
 	public ParticleSystem scoreEffect;
 	//audio
 	public AudioSource[] pongBounce;
+	//animation
+	public Animator anitor;
+	private float timeInterval = 20.0f;
+
 
     // Use this for initialization
     void Start () {
@@ -28,7 +32,6 @@ public class scoring : MonoBehaviour {
         p2score = 0;
         GameOverText.enabled = true;
 		// audio
-
 		var allAudio = GetComponents<AudioSource>();
 		pongBounce = new AudioSource[5];
 		for (int i = 0; i < 5; i++) {
@@ -38,6 +41,9 @@ public class scoring : MonoBehaviour {
 		// particle
 		var effects = GameObject.FindGameObjectWithTag("VE");
 		scoreEffect = effects.GetComponent<ParticleSystem> ();
+		//animation
+		var anim = GameObject.FindGameObjectWithTag("UC");
+		anitor = anim.GetComponent<Animator> ();
     }
 	
     private void GameOver()
@@ -61,6 +67,7 @@ public class scoring : MonoBehaviour {
         {
             GameOverText.enabled = false;
             start = true;
+			anitor.Play ("WAIT03");
         }
         if((transform.position.x > 4 || transform.position.x < -4)
             || (transform.position.y > 4 || transform.position.x < -4))
@@ -74,6 +81,20 @@ public class scoring : MonoBehaviour {
             checkReflect(reflectNormal);
         p1s.text = "Player 1: " + p1score;
         p2s.text = "Player 2: " + p2score;
+
+		if (start) {
+			timeInterval -= Time.deltaTime;
+			if (timeInterval < 0) {
+				if(Random.Range(0,1) > 0 )
+					anitor.Play ("WAIT01");
+				else
+					anitor.Play ("WAIT02");
+				
+				timeInterval = 20.0f;
+			}
+		}
+
+
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -83,12 +104,14 @@ public class scoring : MonoBehaviour {
             GameOver();
             // play effect
             playScoreEffect(collision.contacts[0]);
+			anitor.Play ("WIN00");
         }
         else if (collision.gameObject.name.Equals("p2 goal")) {
             p1score++;
             GameOver();
             // play effect
             playScoreEffect(collision.contacts[0]);
+			anitor.Play ("WIN00");
         }
         if (collision.gameObject.name.Equals("p1Left") || collision.gameObject.name.Equals("p1Right") || collision.gameObject.name.Equals("p2Left") || collision.gameObject.name.Equals("p2Right") || collision.gameObject.CompareTag("Wall")) {
             reflect = true;
